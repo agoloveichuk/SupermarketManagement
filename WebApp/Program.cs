@@ -18,8 +18,9 @@ builder.Services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
 
 // Dependency Injection for Use Cases and Repositories 
 builder.Services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
+builder.Services.AddTransient<IAddCategoryUseCase, AddCategoryUseCase>();
 
-var app = builder.Build();
+var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

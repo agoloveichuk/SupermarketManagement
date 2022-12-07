@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace UseCases.DaraStorePluginInterfaces
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository 
     {
-        public IEnumerable<Category> GetCategories();
+        IEnumerable<Category> GetCategories();
+        void AddCategory(Category category);
     }
 }
