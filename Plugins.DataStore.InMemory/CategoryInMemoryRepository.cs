@@ -26,9 +26,20 @@ namespace Plugins.DataStore.InMemory
             categories.Add(category);
         }
 
+        public void UpdateCategory(Category category)
+        {
+            var categoryToUpdate = GetCategoryById(category.CategoryId);
+            if (categoryToUpdate != null) categoryToUpdate = category;
+        }
+
         public IEnumerable<Category> GetCategories()
         {
             return categories;
+        }
+
+        public Category GetCategoryById(int categoryId)
+        {
+            return categories?.FirstOrDefault(x => x.CategoryId == categoryId);
         }
     }
 }
