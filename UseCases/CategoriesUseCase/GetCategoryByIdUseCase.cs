@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.UseCaseInterfaces;
 
-namespace UseCases
+namespace UseCases.CategoriesUseCase
 {
     public class GetCategoryByIdUseCase : IGetCategoryByIdUseCase
     {
