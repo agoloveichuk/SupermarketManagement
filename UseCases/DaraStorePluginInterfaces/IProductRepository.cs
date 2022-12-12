@@ -9,6 +9,7 @@ namespace UseCases.DaraStorePluginInterfaces
 {
     public interface IProductRepository
     {
+        void AddProduct(Product product);
         IEnumerable<Product> GetProducts();
     }
 }
