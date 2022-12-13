@@ -1,9 +1,10 @@
 ﻿@page "/categories"
 
-@using UseCases.UseCaseInterfaces
+@using UseCases.UseCaseInterfaces.CategoryUseCaseInterface
+@using UseCases.UseCaseInterfaces.ProductUseCaseInterface
 @inject NavigationManager NavigationManager 
 @inject IViewCategoriesUseCase ViewCategoryUseCase
-@inject IEditCategoryUseCase EDitCategoryUseCase
+@inject IEditCategoryUseCase EditCategoryUseCase
 @inject IDeleteCategoryUseCase DeleteCategoryUseCase
 
 <h3>Manage Categories</h3>

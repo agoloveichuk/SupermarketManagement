@@ -10,6 +10,8 @@ namespace UseCases.DaraStorePluginInterfaces
     public interface IProductRepository
     {
         void AddProduct(Product product);
+        Product GetProductById(int productId);
         IEnumerable<Product> GetProducts();
+        void UpdateProduct(Product product);
     }
 }

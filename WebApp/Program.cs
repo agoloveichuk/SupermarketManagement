@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Plugins.DataStore.InMemory;
+using System.Net.NetworkInformation;
 using UseCases;
 using UseCases.CategoriesUseCase;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.UseCaseInterfaces;
+using UseCases.UseCaseInterfaces.CategoryUseCaseInterface;
+using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 using WebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +29,8 @@ builder.Services.AddTransient<IGetCategoryByIdUseCase, GetCategoryByIdUseCase>()
 builder.Services.AddTransient<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
 builder.Services.AddTransient<IViewProductsUseCase, ViewProductsUseCase>();
 builder.Services.AddTransient<IAddProductUseCase, AddProductUseCase>();
+builder.Services.AddTransient<IEditProductUseCase, EditProductUseCase>();
+builder.Services.AddTransient<IGetProductByIdUseCase, GetProductByIdUseCase>();
 
 var app = builder.Build(); 
 

@@ -9,18 +9,18 @@ using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 
 namespace UseCases
 {
-    public class AddProductUseCase : IAddProductUseCase
+    public class GetProductByIdUseCase : IGetProductByIdUseCase
     {
         private readonly IProductRepository productRepository;
 
-        public AddProductUseCase(IProductRepository productRepository)
+        public GetProductByIdUseCase(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
 
-        public void Execute(Product product)
+        public Product Execute(int productId)
         {
-            productRepository.AddProduct(product);
+            return productRepository.GetProductById(productId);
         }
     }
 }

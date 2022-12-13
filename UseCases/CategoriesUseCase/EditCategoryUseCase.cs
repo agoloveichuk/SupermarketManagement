@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
-using UseCases.UseCaseInterfaces;
+using UseCases.UseCaseInterfaces.CategoryUseCaseInterface;
 
 namespace UseCases.CategoriesUseCase
 {

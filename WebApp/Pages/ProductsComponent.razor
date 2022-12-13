@@ -1,6 +1,7 @@
 ﻿@page "/products"
 
-@using UseCases.UseCaseInterfaces
+@using UseCases.UseCaseInterfaces.CategoryUseCaseInterface
+@using UseCases.UseCaseInterfaces.ProductUseCaseInterface
 @inject NavigationManager NavigationManager
 @inject IViewProductsUseCase ViewProductsUseCase
 @inject IGetCategoryByIdUseCase GetCategoryByIdUseCase
@@ -26,6 +27,10 @@
                     <td>@product.Name</td>
                     <td>@(Math.Round(product.Price.Value, 2))</td>
                     <td>@product.Quantity</td>
+                    <td>
+                        <button type="button" @onclick="@(() => EditProduct(product))" class="btn btn-link">Edit</button>
+                        
+                    </td>
                 </tr>
             }
         </tbody>
@@ -47,5 +52,10 @@
     private void OnClickAddProduct()
     {
         NavigationManager.NavigateTo("/addproduct");
+    }
+
+    private void EditProduct(Product product)
+    {
+        NavigationManager.NavigateTo($"/editproduct/{product.ProductId}");
     }
 }

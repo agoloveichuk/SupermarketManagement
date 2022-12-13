@@ -1,12 +1,14 @@
 ﻿@page "/editcategory/{categoryId}"
 
+@using UseCases.UseCaseInterfaces.CategoryUseCaseInterface
+@using UseCases.UseCaseInterfaces.ProductUseCaseInterface
 @inject NavigationManager NavigationManager
-@inject UseCases.UseCaseInterfaces.IAddCategoryUseCase AddCategoryUseCase
-@inject UseCases.UseCaseInterfaces.IGetCategoryByIdUseCase GetCategoryByIdUseCase
-@inject UseCases.UseCaseInterfaces.IEditCategoryUseCase EditCategoryUseCase
+@inject IAddCategoryUseCase AddCategoryUseCase
+@inject IGetCategoryByIdUseCase GetCategoryByIdUseCase
+@inject IEditCategoryUseCase EditCategoryUseCase
 
 <h3>Edit Category</h3>
-
+<br />
 @if (category != null)
 {
     <EditForm Model="category" OnValidSubmit="OnValidSubmit">
