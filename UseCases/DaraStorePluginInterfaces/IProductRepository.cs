@@ -13,5 +13,6 @@ namespace UseCases.DaraStorePluginInterfaces
         Product GetProductById(int productId);
         IEnumerable<Product> GetProducts();
         void UpdateProduct(Product product);
+        void DeleteProduct (int productId);
     }
 }

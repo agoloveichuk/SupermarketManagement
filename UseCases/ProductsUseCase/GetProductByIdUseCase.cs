@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 
-namespace UseCases
+namespace UseCases.ProductsUseCase
 {
     public class GetProductByIdUseCase : IGetProductByIdUseCase
     {

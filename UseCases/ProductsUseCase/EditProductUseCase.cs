@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 
-namespace UseCases
+namespace UseCases.ProductsUseCase
 {
-    public class AddProductUseCase : IAddProductUseCase
+    public class EditProductUseCase : IEditProductUseCase
     {
         private readonly IProductRepository productRepository;
 
-        public AddProductUseCase(IProductRepository productRepository)
+        public EditProductUseCase(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
-
         public void Execute(Product product)
         {
-            productRepository.AddProduct(product);
+            productRepository.UpdateProduct(product);
         }
     }
 }

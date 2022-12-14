@@ -1,5 +1,4 @@
-﻿using CoreBusiness;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,20 +6,20 @@ using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 
-namespace UseCases
+namespace UseCases.ProductsUseCase
 {
-    public class ViewProductsUseCase : IViewProductsUseCase
+    public class DeleteProductUseCase : IDeleteProductUseCase
     {
         private readonly IProductRepository productRepository;
 
-        public ViewProductsUseCase(IProductRepository productRepository)
+        public DeleteProductUseCase(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
 
-        public IEnumerable<Product> Execute()
+        public void Execute(int categoryId)
         {
-            return productRepository.GetProducts();
+            productRepository.DeleteProduct(categoryId);
         }
     }
 }
