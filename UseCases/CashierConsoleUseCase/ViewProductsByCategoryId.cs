@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
+using UseCases.UseCaseInterfaces.CashierConsoleUseCaseInterface;
 
-namespace UseCases
+namespace UseCases.CashierConsoleUseCase
 {
     public class ViewProductsByCategoryId : IViewProductsByCategoryId
     {
@@ -17,7 +18,7 @@ namespace UseCases
             this.productRepository = productRepository;
         }
         public IEnumerable<Product> Execute(int categoryId)
-        { 
+        {
             return productRepository.GetProductsByCategoryId(categoryId);
         }
     }

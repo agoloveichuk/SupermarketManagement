@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.ProductsUseCase;
 
-namespace UseCases
+namespace UseCases.CashierConsoleUseCase
 {
     public class SellProductUseCase : ISellProductUseCase
     {

@@ -1,4 +1,4 @@
-﻿namespace UseCases
+﻿namespace UseCases.UseCaseInterfaces.CashierConsoleUseCaseInterface
 {
     public interface ISellProductUseCase
     {
