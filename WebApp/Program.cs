@@ -6,10 +6,11 @@ using UseCases.CashierConsoleUseCase;
 using UseCases.CategoriesUseCase;
 using UseCases.DaraStorePluginInterfaces;
 using UseCases.ProductsUseCase;
-using UseCases.UseCaseInterfaces;
+using UseCases.TransactionsUseCase;
 using UseCases.UseCaseInterfaces.CashierConsoleUseCaseInterface;
 using UseCases.UseCaseInterfaces.CategoryUseCaseInterface;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
+using UseCases.UseCaseInterfaces.TransactionUseCaseInterface;
 using WebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 // Dependency Injection for In-Memory Data Store 
 builder.Services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductInMemoryRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionMemoryRepository>();
 
 // Dependency Injection for Use Cases and Repositories 
 builder.Services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
@@ -36,6 +38,7 @@ builder.Services.AddTransient<IGetProductByIdUseCase, GetProductByIdUseCase>();
 builder.Services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
 builder.Services.AddTransient<IViewProductsByCategoryId, ViewProductsByCategoryId>();
 builder.Services.AddTransient<ISellProductUseCase, SellProductUseCase>();
+builder.Services.AddTransient<IRecordTransactionUseCase, RecordTransactionUseCase>();
 
 var app = builder.Build(); 
 

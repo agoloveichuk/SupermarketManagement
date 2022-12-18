@@ -1,4 +1,5 @@
-﻿@    using UseCases.UseCaseInterfaces.ProductUseCaseInterface
+﻿@using UseCases.UseCaseInterfaces.ProductUseCaseInterface
+@using UseCases.UseCaseInterfaces.CashierConsoleUseCaseInterface
 @inject IGetProductByIdUseCase GetProductByIdUseCase
 @inject ISellProductUseCase SellProductUseCase
 
@@ -37,6 +38,9 @@
     public Product SelectedProduct { get; set; }
 
     [Parameter]
+    public string CashierName { get; set; }
+
+    [Parameter]
     public EventCallback<Product> OnProductSold { get; set; }
 
     protected override void OnParametersSet()
@@ -68,9 +72,11 @@
         }
         else if (product.Quantity >= productToSell.Quantity)
         {
+            if (string.IsNullOrWhiteSpace(CashierName))
+                throw new ApplicationException("Cashier's name is missing, cannot sell product");
             OnProductSold.InvokeAsync(productToSell);
             errorMessage = string.Empty;
-            SellProductUseCase.Execute(productToSell.ProductId, productToSell.Quantity.Value);
+            SellProductUseCase.Execute(CashierName, productToSell.ProductId, productToSell.Quantity.Value);
         }
         else
         {
