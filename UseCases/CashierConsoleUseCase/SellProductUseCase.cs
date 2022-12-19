@@ -30,9 +30,9 @@ namespace UseCases.CashierConsoleUseCase
             var product = productRepository.GetProductById(productId);
             if (product == null) return;
 
+            recordTransactionUseCase.Execute(cashierName, productId, qtyToSell);
             product.Quantity -= qtyToSell;
             productRepository.UpdateProduct(product);
-            recordTransactionUseCase.Execute(cashierName, productId, qtyToSell);
         }
     }
 }
