@@ -2,9 +2,11 @@
 
 @using UseCases.UseCaseInterfaces.TransactionUseCaseInterface
 @inject IGetTransactionsUseCase GetTransactionsUseCase
+@inject IJSRuntime JCRuntime
 
-<div class="row">
-    <div class="col-4">
+<div id=printarea>
+    <div class="row">
+    <div class="col-2">
         <label for="cashier">Cashier Name</label>
         <input type="text" id="cashier" class="form-control" @bind-value="cashierName" />
     </div>
@@ -17,12 +19,20 @@
         <input type="date" id="endDate" class="form-control" @bind-value="endDate" />
     </div>
     <div class="col-2">
+        <label>&nbsp;</label>
         <button type="button" class="btn btn-primary" @onclick="LoadTransactions">Search</button>
     </div>
+    <div class="col-2">
+        <label>&nbsp;</label>
+        <button type="button" class="btn btn-primary" @onclick="PrintReport">Print</button>
+    </div>
 </div>
+</div>
+<br />
 @if (transactions != null)
 {
-    <table class="table">
+    <div id=printarea>
+        <table class="table">
         <thead>
             <tr>
                 <th>Date Time</th>
@@ -62,6 +72,7 @@
             </td>
         </tfoot>
     </table>
+    </div>
 }
 @code {
     private string cashierName;
@@ -80,5 +91,10 @@
     private void LoadTransactions()
     {
         transactions = GetTransactionsUseCase.Execute(cashierName, startDate, endDate);
+    }
+
+    private void PrintReport()
+    {
+        JCRuntime.InvokeVoidAsync("print");
     }
 }
