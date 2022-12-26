@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Plugins.DataStore;
 using Plugins.DataStore.InMemory;
 using System.Net.NetworkInformation;
 using UseCases.CashierConsoleUseCase;
@@ -20,7 +23,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
-// Dependency Injection for In-Memory Data Store 
+builder.Services.AddDbContext<MarketContext>(options =>
+{
+    options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
+}); 
+
+// Dependency Injection for In-Memory Data Store a
 builder.Services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductInMemoryRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionMemoryRepository>();
