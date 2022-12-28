@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Plugins.DataStore;
 using Plugins.DataStore.InMemory;
+using Plugins.DataStore.SQL;
 using System.Net.NetworkInformation;
 using UseCases.CashierConsoleUseCase;
 using UseCases.CategoriesUseCase;
@@ -29,9 +30,14 @@ builder.Services.AddDbContext<MarketContext>(options =>
 }); 
 
 // Dependency Injection for In-Memory Data Store a
-builder.Services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
-builder.Services.AddScoped<IProductRepository, ProductInMemoryRepository>();
-builder.Services.AddScoped<ITransactionRepository, TransactionMemoryRepository>();
+//builder.Services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
+//builder.Services.AddScoped<IProductRepository, ProductInMemoryRepository>();
+//builder.Services.AddScoped<ITransactionRepository, TransactionMemoryRepository>();
+
+// Dependency Injection for ef core Data Store for SQL
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 // Dependency Injection for Use Cases and Repositories 
 builder.Services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
