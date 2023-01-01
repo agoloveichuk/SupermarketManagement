@@ -16,8 +16,10 @@ using UseCases.UseCaseInterfaces.CategoryUseCaseInterface;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 using UseCases.UseCaseInterfaces.TransactionUseCaseInterface;
 using WebApp.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("AccountContextConnection") ?? throw new InvalidOperationException("Connection string 'AccountContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -27,8 +29,21 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddDbContext<MarketContext>(options =>
 {
     options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
-}); 
+});
 
+builder.Services.AddDbContext<AccountContext>(options =>
+{
+    options.UseSqlServer("name=ConnectionStrings:AccountContextConnection");
+});
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<AccountContext>();
+
+builder.Services.AddAuthorization(option =>
+{
+    option.AddPolicy("AdminOnly", p => p.RequireClaim("Position", "Admin"));
+    option.AddPolicy("CashierOnly", p => p.RequireClaim("Position", "Cashier"));
+});
 // Dependency Injection for In-Memory Data Store a
 //builder.Services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
 //builder.Services.AddScoped<IProductRepository, ProductInMemoryRepository>();
@@ -72,7 +87,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.MapRazorPages();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
