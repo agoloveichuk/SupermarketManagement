@@ -13,20 +13,20 @@
     </div>
 
     </div>
-        <br />
-        <div class="row">
-            <div class="col-4">
-                <SelectProductForSellingComponent OnProductSelected="SelectProduct"></SelectProductForSellingComponent>
-                <br />
-                <SellProductComponent CashierName="@cashierName" SelectedProduct="selectedProduct" OnProductSold="SellProduct"></SellProductComponent>
-            </div>
-            <div class="col">
-                <TodayTransactionsComponent @ref="transactionsComponent"></TodayTransactionsComponent>
-            </div>
+
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <SelectProductForSellingComponent OnProductSelected="SelectProduct"></SelectProductForSellingComponent>
+            <br />
+            <SellProductComponent CashierName="@cashierName" SelectedProduct="selectedProduct" OnProductSold="SellProduct"></SellProductComponent>
         </div>
+        <div class="col">
+            <br />
+            <TodayTransactionsComponent @ref="transactionsComponent"></TodayTransactionsComponent>
+        </div>
+    </div>
 }
-
-
 
 @code {
     private TodayTransactionsComponent transactionsComponent;
