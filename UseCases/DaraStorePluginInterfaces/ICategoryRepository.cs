@@ -4,16 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UseCases.DaraStorePluginInterfaces;
 
-namespace UseCases.DaraStorePluginInterfaces
+public interface ICategoryRepository : IGenericRepository<Product>
 {
-    public interface ICategoryRepository 
-    {
-        void Add(Category category);
-        void Update(Category category);
-        void Delete(int categoryId);
-        IEnumerable<Category> GetAll();
-        Category GetById(int categoryId);
 
-    } 
 }

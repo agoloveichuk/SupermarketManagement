@@ -11,9 +11,9 @@ namespace UseCases.CategoriesUseCase
 {
     public class GetCategoryByIdUseCase : IGetCategoryByIdUseCase
     {
-        private readonly ICategoryRepository categoryrepository;
+        private readonly IGenericRepository<Category> categoryrepository;
 
-        public GetCategoryByIdUseCase(ICategoryRepository categoryrepository)
+        public GetCategoryByIdUseCase(IGenericRepository<Category> categoryrepository)
         {
             this.categoryrepository = categoryrepository;
         }

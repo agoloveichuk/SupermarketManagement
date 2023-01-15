@@ -11,9 +11,9 @@ namespace UseCases.CategoriesUseCase
 {
     public class ViewCategoriesUseCase : IViewCategoriesUseCase
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly IGenericRepository<Category> categoryRepository;
 
-        public ViewCategoriesUseCase(ICategoryRepository categoryRepository)
+        public ViewCategoriesUseCase(IGenericRepository<Category> categoryRepository)
         {
             this.categoryRepository = categoryRepository;
         }

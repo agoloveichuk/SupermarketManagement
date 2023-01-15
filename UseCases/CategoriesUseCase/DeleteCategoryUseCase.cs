@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoreBusiness;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace UseCases.CategoriesUseCase
 {
     public class DeleteCategoryUseCase : IDeleteCategoryUseCase
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly IGenericRepository<Category> categoryRepository;
 
-        public DeleteCategoryUseCase(ICategoryRepository categoryRepository)
+        public DeleteCategoryUseCase(IGenericRepository<Category> categoryRepository)
         {
             this.categoryRepository = categoryRepository;
         }

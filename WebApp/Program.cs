@@ -50,7 +50,8 @@ builder.Services.AddAuthorization(option =>
 //builder.Services.AddScoped<ITransactionRepository, TransactionMemoryRepository>();
 
 // Dependency Injection for ef core Data Store for SQL
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+//builder.Services.AddScoped<ICategoryRepository, CategoryRepository();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 

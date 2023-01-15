@@ -11,9 +11,9 @@ namespace UseCases.CategoriesUseCase
 {
     public class EditCategoryUseCase : IEditCategoryUseCase
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly IGenericRepository<Category> categoryRepository;
 
-        public EditCategoryUseCase(ICategoryRepository categoryRepository)
+        public EditCategoryUseCase(IGenericRepository<Category> categoryRepository)
         {
             this.categoryRepository = categoryRepository;
         }

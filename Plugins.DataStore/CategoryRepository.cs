@@ -8,45 +8,12 @@ using UseCases.DaraStorePluginInterfaces;
 
 namespace Plugins.DataStore.SQL
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : GenericRepository<Category>
     {
         private readonly MarketContext db;
-
-        public CategoryRepository(MarketContext db)
+        public CategoryRepository(MarketContext db) : base(db)
         {
             this.db = db;
-        }
-        public void Add(Category category)
-        {
-            db.Categories.Add(category);
-            db.SaveChanges();
-        }
-
-        public void Delete(int categoryId)
-        {
-            var category = db.Categories.Find(categoryId);
-            if (category == null) return;
-
-            db.Categories.Remove(category);
-            db.SaveChanges();
-        }
-
-        public IEnumerable<Category> GetAll()
-        {
-            return db.Categories.ToList();
-        }
-
-        public Category GetById(int categoryId)
-        {
-            return db.Categories.Find(categoryId);
-        }
-
-        public void Update(Category category)
-        {
-            var cat = db.Categories.Find(category.CategoryId);
-            cat.Name = category.Name;
-            cat.Description = category.Description;
-            db.SaveChanges();
         }
     }
 }
