@@ -23,7 +23,7 @@ namespace Plugins.DataStore.InMemory
             };
         }
 
-        public void AddProduct(Product product)
+        public void Add(Product product)
         {
             if (products.Any(x => x.Name.Equals(product.Name, StringComparison.OrdinalIgnoreCase))) return;
             if (products != null && products.Count > 0)
@@ -39,14 +39,14 @@ namespace Plugins.DataStore.InMemory
             products.Add(product);
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetAll()
         {
             return products;
         }
 
-        public void UpdateProduct(Product product)
+        public void Update(Product product)
         {
-            var productToUpdate = GetProductById(product.ProductId);
+            var productToUpdate = GetById(product.ProductId);
             if (productToUpdate != null)
             {
                 productToUpdate.Name = product.Name;
@@ -56,17 +56,17 @@ namespace Plugins.DataStore.InMemory
             }
         }
 
-        public Product GetProductById(int productId)
+        public Product GetById(int productId)
         {
             return products?.FirstOrDefault(x => x.ProductId == productId);
         }
 
-        public void DeleteProduct(int productId)
+        public void Delete(int productId)
         {
-            products?.Remove(GetProductById(productId));
+            products?.Remove(GetById(productId));
         }
 
-        public IEnumerable<Product> GetProductsByCategoryId(int categoryId)
+        public IEnumerable<Product> GetAllByCategoryId(int categoryId)
         {
             return products.Where(x => x.CategoryId == categoryId); 
         }

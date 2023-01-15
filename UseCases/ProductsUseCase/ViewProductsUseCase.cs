@@ -20,7 +20,7 @@ namespace UseCases.ProductsUseCase
 
         public IEnumerable<Product> Execute()
         {
-            return productRepository.GetProducts();
+            return productRepository.GetAll();
         }
     }
 }

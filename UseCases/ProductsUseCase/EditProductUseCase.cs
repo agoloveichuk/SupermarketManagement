@@ -19,7 +19,7 @@ namespace UseCases.ProductsUseCase
         }
         public void Execute(Product product)
         {
-            productRepository.UpdateProduct(product);
+            productRepository.Update(product);
         }
     }
 }

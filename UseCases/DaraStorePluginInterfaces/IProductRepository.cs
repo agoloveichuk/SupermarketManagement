@@ -9,11 +9,11 @@ namespace UseCases.DaraStorePluginInterfaces
 {
     public interface IProductRepository
     {
-        void AddProduct(Product product);
-        Product GetProductById(int productId);
-        IEnumerable<Product> GetProducts();
-        void UpdateProduct(Product product);
-        void DeleteProduct(int productId);
-        IEnumerable<Product> GetProductsByCategoryId(int categoryId);    
+        void Add(Product product);
+        void Update(Product product);
+        void Delete(int productId);
+        IEnumerable<Product> GetAll();
+        Product GetById(int productId);
+        IEnumerable<Product> GetAllByCategoryId(int categoryId);    
     }
 }

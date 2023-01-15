@@ -20,7 +20,7 @@ namespace UseCases.CategoriesUseCase
 
         public IEnumerable<Category> Execute()
         {
-            return categoryRepository.GetCategories();
+            return categoryRepository.GetAll();
         }
     }
 }

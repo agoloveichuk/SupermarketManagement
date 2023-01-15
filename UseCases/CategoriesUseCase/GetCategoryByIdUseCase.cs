@@ -19,7 +19,7 @@ namespace UseCases.CategoriesUseCase
         }
         public Category Execute(int categoryId)
         {
-            return categoryrepository.GetCategoryById(categoryId);
+            return categoryrepository.GetById(categoryId);
         }
     }
 }

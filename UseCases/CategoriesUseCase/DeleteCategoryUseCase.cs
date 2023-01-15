@@ -18,7 +18,7 @@ namespace UseCases.CategoriesUseCase
         }
         public void Execute(int categoryId)
         {
-            categoryRepository.DeleteCategory(categoryId);
+            categoryRepository.Delete(categoryId);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UseCases.ProductsUseCase
 
         public void Execute(int categoryId)
         {
-            productRepository.DeleteProduct(categoryId);
+            productRepository.Delete(categoryId);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace UseCases.ProductsUseCase
 
         public Product Execute(int productId)
         {
-            return productRepository.GetProductById(productId);
+            return productRepository.GetById(productId);
         }
     }
 }

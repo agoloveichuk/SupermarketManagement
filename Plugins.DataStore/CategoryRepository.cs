@@ -16,13 +16,13 @@ namespace Plugins.DataStore.SQL
         {
             this.db = db;
         }
-        public void AddCategory(Category category)
+        public void Add(Category category)
         {
             db.Categories.Add(category);
             db.SaveChanges();
         }
 
-        public void DeleteCategory(int categoryId)
+        public void Delete(int categoryId)
         {
             var category = db.Categories.Find(categoryId);
             if (category == null) return;
@@ -31,17 +31,17 @@ namespace Plugins.DataStore.SQL
             db.SaveChanges();
         }
 
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<Category> GetAll()
         {
             return db.Categories.ToList();
         }
 
-        public Category GetCategoryById(int categoryId)
+        public Category GetById(int categoryId)
         {
             return db.Categories.Find(categoryId);
         }
 
-        public void UpdateCategory(Category category)
+        public void Update(Category category)
         {
             var cat = db.Categories.Find(category.CategoryId);
             cat.Name = category.Name;

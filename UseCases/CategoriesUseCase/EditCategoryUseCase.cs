@@ -19,7 +19,7 @@ namespace UseCases.CategoriesUseCase
         }
         public void Execute(Category category)
         {
-            categoryRepository.UpdateCategory(category);
+            categoryRepository.Update(category);
         }
     }
 }

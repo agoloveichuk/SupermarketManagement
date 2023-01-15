@@ -9,10 +9,11 @@ namespace UseCases.DaraStorePluginInterfaces
 {
     public interface ICategoryRepository 
     {
-        IEnumerable<Category> GetCategories();
-        void AddCategory(Category category);
-        void UpdateCategory(Category category);
-        Category GetCategoryById(int categoryId);
-        void DeleteCategory(int categoryId);
+        void Add(Category category);
+        void Update(Category category);
+        void Delete(int categoryId);
+        IEnumerable<Category> GetAll();
+        Category GetById(int categoryId);
+
     } 
 }

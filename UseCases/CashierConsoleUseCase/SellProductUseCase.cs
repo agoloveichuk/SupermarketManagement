@@ -27,12 +27,12 @@ namespace UseCases.CashierConsoleUseCase
 
         public void Execute(string cashierName, int productId, int qtyToSell)
         {
-            var product = productRepository.GetProductById(productId);
+            var product = productRepository.GetById(productId);
             if (product == null) return;
 
             recordTransactionUseCase.Execute(cashierName, productId, qtyToSell);
             product.Quantity -= qtyToSell;
-            productRepository.UpdateProduct(product);
+            productRepository.Update(product);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UseCases.CashierConsoleUseCase
         }
         public IEnumerable<Product> Execute(int categoryId)
         {
-            return productRepository.GetProductsByCategoryId(categoryId);
+            return productRepository.GetAllByCategoryId(categoryId);
         }
     }
 }
