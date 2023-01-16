@@ -12,8 +12,8 @@ using WebApp.Data;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20221229165025_CreateIdentitySchema3")]
-    partial class CreateIdentitySchema3
+    [Migration("20230116113842_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

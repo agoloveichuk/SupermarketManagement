@@ -12,8 +12,8 @@ using Plugins.DataStore;
 namespace Plugins.DataStore.SQL.Migrations
 {
     [DbContext(typeof(MarketContext))]
-    [Migration("20221226172149_Init")]
-    partial class Init
+    [Migration("20230116113753_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
