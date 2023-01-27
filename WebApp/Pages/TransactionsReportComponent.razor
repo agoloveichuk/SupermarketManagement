@@ -62,15 +62,17 @@
             }
         </tbody>
         <tfoot>
-            <td colspan="6">&nbsp;</td>
-            <td style="text-align:right">
-                <b>Grand Total:</b>
-            </td>
-            <td style="text-align:right">
-                <b>
-                    @(string.Format("{0:c}", transactions.Sum(x => x.Price * x.SoldQty)))
-                </b>
-            </td>
+            <tr>
+                <td colspan="6">&nbsp;</td>
+                <td style="text-align:right">
+                    <b>Grand Total:</b>
+                </td>
+                <td style="text-align:right">
+                    <b>
+                        @(string.Format("{0:c}", transactions.Sum(x => x.Price * x.SoldQty)))
+                    </b>
+                </td>
+            </tr>
         </tfoot>
     </table>
     </div>
@@ -79,7 +81,7 @@
     private string cashierName;
     private DateTime startDate;
     private DateTime endDate;
-    private IEnumerable<Transaction> transactions;
+    private IEnumerable<Transaction>? transactions;
 
     protected override void OnInitialized()
     {

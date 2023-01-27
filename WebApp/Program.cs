@@ -1,14 +1,10 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Plugins.DataStore;
-using Plugins.DataStore.InMemory;
-using Plugins.DataStore.SQL;
-using System.Net.NetworkInformation;
+using Plugins.DataStore.SQL.Repositories;
 using UseCases.CashierConsoleUseCase;
 using UseCases.CategoriesUseCase;
-using UseCases.DaraStorePluginInterfaces;
+using UseCases.DataStorePluginInterfaces;
 using UseCases.ProductsUseCase;
 using UseCases.TransactionsUseCase;
 using UseCases.UseCaseInterfaces.CashierConsoleUseCaseInterface;
@@ -16,7 +12,6 @@ using UseCases.UseCaseInterfaces.CategoryUseCaseInterface;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 using UseCases.UseCaseInterfaces.TransactionUseCaseInterface;
 using WebApp.Data;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AccountContextConnection") ?? throw new InvalidOperationException("Connection string 'AccountContextConnection' not found.");
@@ -28,7 +23,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddDbContext<MarketContext>(options =>
 {
-    options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
+    options.UseSqlServer("name=ConnectionStrings:MarketContextConnection");
 });
 
 builder.Services.AddDbContext<AccountContext>(options =>
@@ -72,7 +67,7 @@ builder.Services.AddTransient<IRecordTransactionUseCase, RecordTransactionUseCas
 builder.Services.AddTransient<IGetTodayTransactionsUseCase, GetTodayTransactionsUseCase>();
 builder.Services.AddTransient<IGetTransactionsUseCase, GetTransactionsUseCase>();
 
-var app = builder.Build(); 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

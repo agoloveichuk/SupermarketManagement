@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UseCases.DaraStorePluginInterfaces;
+using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCaseInterfaces.ProductUseCaseInterface;
 using UseCases.UseCaseInterfaces.TransactionUseCaseInterface;
 

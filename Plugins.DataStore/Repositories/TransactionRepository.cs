@@ -1,33 +1,28 @@
 ﻿using CoreBusiness;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UseCases.DaraStorePluginInterfaces;
+using UseCases.DataStorePluginInterfaces;
 
-namespace Plugins.DataStore.SQL
+namespace Plugins.DataStore.SQL.Repositories
 {
     public class TransactionRepository : ITransactionRepository
     {
-        private readonly MarketContext db;
+        private readonly MarketContext context;
 
-        public TransactionRepository(MarketContext db)
+        public TransactionRepository(MarketContext context)
         {
-            this.db = db;
+            this.context = context;
         }
         public IEnumerable<Transaction> Get(string cashierName)
         {
-            return db.Transactions.Where(x => x.CashierName.ToLower() == cashierName.ToLower());
+            return context.Transactions.Where(x => x.CashierName.ToLower() == cashierName.ToLower());
         }
 
         public IEnumerable<Transaction> GetByDay(string cashierName, DateTime date)
         {
             if (string.IsNullOrWhiteSpace(cashierName))
-                return db.Transactions.Where(x => x.TimeStamp.Date == date.Date);
+                return context.Transactions.Where(x => x.TimeStamp.Date == date.Date);
             else
-                return db.Transactions.Where(x =>
+                return context.Transactions.Where(x =>
                     EF.Functions.Like(x.CashierName, $"%{cashierName}%") &&
                     x.TimeStamp.Date == date.Date);
         }
@@ -45,16 +40,16 @@ namespace Plugins.DataStore.SQL
                 CashierName = cashierName
             };
 
-            db.Transactions.Add(transaction);
-            db.SaveChanges();
+            context.Transactions.Add(transaction);
+            context.SaveChanges();
         }
 
         public IEnumerable<Transaction> Search(string cashierName, DateTime startDate, DateTime endDate)
         {
             if (string.IsNullOrWhiteSpace(cashierName))
-                return db.Transactions.Where(x => x.TimeStamp >= startDate.Date && x.TimeStamp <= endDate.Date.AddDays(1).Date);
+                return context.Transactions.Where(x => x.TimeStamp >= startDate.Date && x.TimeStamp <= endDate.Date.AddDays(1).Date);
             else
-                return db.Transactions.Where(x =>
+                return context.Transactions.Where(x =>
                 EF.Functions.Like(x.CashierName, $"%{cashierName}%") &&
                 x.TimeStamp >= startDate.Date && x.TimeStamp <= endDate.Date.AddDays(1).Date);
         }
